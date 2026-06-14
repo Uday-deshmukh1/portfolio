@@ -1,4 +1,5 @@
-# 🚀 Portfolio - Uday Patel
+# 🚀 Portfolio - Uday deshmukh
+
 
 A production-ready portfolio website built with Next.js 15, TypeScript, Tailwind CSS v4, Framer Motion, and Three.js. Deployed on the Cloudflare ecosystem.
 
