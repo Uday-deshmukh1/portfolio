@@ -9,7 +9,7 @@ function CertificateCard({ cert, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.08 }}
-      className="cert-card group"
+      className="cert-card group flex flex-col"
     >
       <div className="cert-card-shine" />
       <div className="flex items-start justify-between gap-4">
@@ -28,9 +28,16 @@ function CertificateCard({ cert, index }) {
             {cert.logo}
           </div>
         </div>
-        <span className="shrink-0 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-[0.6rem] font-bold uppercase text-slate-500 transition group-hover:border-white/20 group-hover:text-slate-300">
-          {cert.date}
-        </span>
+        <div className="flex shrink-0 items-center gap-2">
+          {cert.badge && (
+            <span className="badge-shimmer rounded-md bg-amber-500/12 px-2.5 py-1 font-mono text-[0.6rem] font-bold uppercase tracking-wider text-amber-400 shadow-sm shadow-amber-500/10">
+              BADGE
+            </span>
+          )}
+          <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-[0.6rem] font-bold uppercase text-slate-500 transition group-hover:border-white/20 group-hover:text-slate-300">
+            {cert.date}
+          </span>
+        </div>
       </div>
 
       {cert.image && (
@@ -57,14 +64,14 @@ function CertificateCard({ cert, index }) {
         </div>
       )}
 
-      <div className="mt-4 grid grid-cols-2 gap-2">
+      <div className="mt-auto grid grid-cols-2 gap-2 pt-4">
         <a
           href={cert.href}
           target="_blank"
           rel="noreferrer"
           className="cert-action cert-action-primary"
         >
-          View Certificate
+          {cert.badge ? "View Badge" : "View Certificate"}
           <ExternalLink size={12} />
         </a>
         <a

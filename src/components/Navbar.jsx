@@ -30,7 +30,7 @@ function Navbar() {
 
   useEffect(() => subscribe(setProfileImg), []);
 
-  const emailImgSrc = `${import.meta.env.BASE_URL}icons/mail.svg`;
+  const emailImgSrc = `${import.meta.env.BASE_URL}icons/mail.png`;
 
   return (
     <header
@@ -45,7 +45,7 @@ function Navbar() {
           aria-label="Uday Deshmukh home"
         >
           {profileImg ? (
-            <img src={profileImg} alt="Uday Deshmukh" className="h-full w-full object-cover" />
+            <img src={profileImg} alt="Uday Deshmukh" className="h-full w-full object-cover" loading="lazy" />
           ) : (
             <span className="grid h-full w-full place-items-center bg-white/[0.04] font-mono text-sm font-black text-cyan-400">
               UD
@@ -71,16 +71,16 @@ function Navbar() {
               Open To Opportunities
             </div>
             <a className="icon-button icon-linkedin" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-              <img src={`${import.meta.env.BASE_URL}icons/linkedin.svg`} alt="LinkedIn" className="h-full w-full rounded-[7px] object-cover" />
+              <img src={`${import.meta.env.BASE_URL}icons/linkedin.png`} alt="LinkedIn" className="h-full w-full rounded-[7px] object-cover" />
             </a>
             <a className="icon-button icon-instagram" href={profile.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
-              <img src={`${import.meta.env.BASE_URL}icons/instagram.svg`} alt="Instagram" className="h-full w-full rounded-[7px] object-cover" />
+              <img src={`${import.meta.env.BASE_URL}icons/instagram.png`} alt="Instagram" className="h-full w-full rounded-[7px] object-cover" />
             </a>
             <a className="icon-button icon-github" href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub">
-              <img src={`${import.meta.env.BASE_URL}icons/github.svg`} alt="GitHub" className="h-full w-full rounded-[7px] object-cover" />
+              <img src={`${import.meta.env.BASE_URL}icons/github.png`} alt="GitHub" className="h-full w-full rounded-[7px] object-cover" />
             </a>
             <button className="icon-button icon-email" onClick={() => setDrawer({ open: true })} aria-label="Email Uday" type="button">
-              <img src={`${import.meta.env.BASE_URL}icons/mail.svg`} alt="Email" className="h-full w-full rounded-[7px] object-cover" />
+              <img src={`${import.meta.env.BASE_URL}icons/mail.png`} alt="Email" className="h-full w-full rounded-[7px] object-cover" />
             </button>
           </div>
 

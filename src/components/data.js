@@ -11,7 +11,7 @@ export const profile = {
 };
 
 export const stats = [
-  { label: "Followers", value: 5000, suffix: "+" },
+  { label: "Followers (LinkedIn)", value: 5000, suffix: "+" },
   { label: "Certifications", value: 18, suffix: "+" },
   { label: "Projects", value: 6, suffix: "+" },
   { label: "Hackathons", value: 3, suffix: "+" },
@@ -117,6 +117,7 @@ export const certificates = [
     tags: ["IBM", "Credly Verified"],
     logo: "IBM",
     color: "#006699",
+    badge: true,
     href: `${import.meta.env.BASE_URL}certificates/ibm-cybersecurity-fundamentals.png`,
     image: `${import.meta.env.BASE_URL}certificates/ibm-cybersecurity-fundamentals.png`,
   },
@@ -158,6 +159,7 @@ export const certificates = [
     tags: ["Google", "Analytics"],
     logo: "GA",
     color: "#4285F4",
+    badge: true,
     href: `${import.meta.env.BASE_URL}certificates/google-analytics-certification-uday-deshmukh.pdf`,
     image: `${import.meta.env.BASE_URL}certificates/google-analytics-badge.png`,
   },

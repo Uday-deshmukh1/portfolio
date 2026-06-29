@@ -13,7 +13,7 @@ const contactPlatforms = [
   {
     name: "LinkedIn",
     description: "Let's connect professionally",
-    imgSrc: `${import.meta.env.BASE_URL}icons/linkedin.svg`,
+    imgSrc: `${import.meta.env.BASE_URL}icons/linkedin.png`,
     link: "https://www.linkedin.com/in/uday-deshmukh-b8170a397?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     gradient: "from-blue-600/20 to-blue-400/10",
     borderHover: "hover:border-blue-500/40",
@@ -22,7 +22,7 @@ const contactPlatforms = [
   {
     name: "Instagram",
     description: "Follow my creative journey",
-    imgSrc: `${import.meta.env.BASE_URL}icons/instagram.svg`,
+    imgSrc: `${import.meta.env.BASE_URL}icons/instagram.png`,
     link: "https://www.instagram.com/uday_deshmukh.i?igsh=MXg1OW1qamhzbDgwOQ==",
     gradient: "from-pink-600/20 to-purple-400/10",
     borderHover: "hover:border-pink-500/40",
@@ -31,7 +31,7 @@ const contactPlatforms = [
   {
     name: "Email",
     description: "Send me a direct message",
-    imgSrc: `${import.meta.env.BASE_URL}icons/mail.svg`,
+    imgSrc: `${import.meta.env.BASE_URL}icons/mail.png`,
     type: "email",
     link: `mailto:udaydeshmukh266@gmail.com?subject=Let's%20Connect%20-%20[Your%20Name]&body=Hi%20Uday%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20connect%20with%20you.%0A%0ABest%2C%0A[Your%20Name]`,
     gradient: "from-cyan-600/20 to-cyan-400/10",
@@ -41,7 +41,7 @@ const contactPlatforms = [
   {
     name: "GitHub",
     description: "Check out my open source work",
-    imgSrc: `${import.meta.env.BASE_URL}icons/github.svg`,
+    imgSrc: `${import.meta.env.BASE_URL}icons/github.png`,
     link: "https://github.com/Uday-deshmukh1",
     gradient: "from-purple-600/20 to-violet-400/10",
     borderHover: "hover:border-purple-500/40",

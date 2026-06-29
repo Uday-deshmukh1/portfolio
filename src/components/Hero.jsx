@@ -24,7 +24,7 @@ function Hero() {
 
   useEffect(() => subscribe(setProfileImg), []);
 
-  const emailImgSrc = `${import.meta.env.BASE_URL}icons/mail.svg`;
+  const emailImgSrc = `${import.meta.env.BASE_URL}icons/mail.png`;
 
   return (
     <section id="home" className="section min-h-screen pt-28">
@@ -96,7 +96,7 @@ function Hero() {
             <div className="flex flex-col items-center text-center">
               <div className="h-28 w-28 overflow-hidden rounded-full bg-gradient-to-br from-cyan-500 to-purple-600 p-[3px] shadow-lg shadow-cyan-500/20">
                 {profileImg ? (
-                  <img src={profileImg} alt="Uday Deshmukh" className="h-full w-full rounded-full object-cover" />
+                  <img src={profileImg} alt="Uday Deshmukh" className="h-full w-full rounded-full object-cover" loading="lazy" />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center rounded-full bg-ink text-4xl font-black text-white">
                     UD
@@ -114,16 +114,16 @@ function Hero() {
               </div>
               <div className="mt-6 flex gap-2">
                 <a className="icon-button icon-linkedin" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                  <img src={`${import.meta.env.BASE_URL}icons/linkedin.svg`} alt="LinkedIn" className="h-full w-full rounded-[7px] object-cover" />
+                  <img src={`${import.meta.env.BASE_URL}icons/linkedin.png`} alt="LinkedIn" className="h-full w-full rounded-[7px] object-cover" />
                 </a>
                 <a className="icon-button icon-instagram" href={profile.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
-                  <img src={`${import.meta.env.BASE_URL}icons/instagram.svg`} alt="Instagram" className="h-full w-full rounded-[7px] object-cover" />
+                  <img src={`${import.meta.env.BASE_URL}icons/instagram.png`} alt="Instagram" className="h-full w-full rounded-[7px] object-cover" />
                 </a>
                 <a className="icon-button icon-github" href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub">
-                  <img src={`${import.meta.env.BASE_URL}icons/github.svg`} alt="GitHub" className="h-full w-full rounded-[7px] object-cover" />
+                  <img src={`${import.meta.env.BASE_URL}icons/github.png`} alt="GitHub" className="h-full w-full rounded-[7px] object-cover" />
                 </a>
                 <button className="icon-button icon-email" onClick={() => setDrawer({ open: true })} aria-label="Email" type="button">
-                  <img src={`${import.meta.env.BASE_URL}icons/mail.svg`} alt="Email" className="h-full w-full rounded-[7px] object-cover" />
+                  <img src={`${import.meta.env.BASE_URL}icons/mail.png`} alt="Email" className="h-full w-full rounded-[7px] object-cover" />
                 </button>
               </div>
             </div>
