@@ -1,66 +1,148 @@
-import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import MagneticButton from "./MagneticButton.jsx";
-import { profile } from "./data.js";
+import { ArrowRight, Download, BookOpen, MapPin } from "lucide-react";
+import { profile } from "./data";
+import { getCurrentImage, subscribe } from "../data/profileImages";
+import Counters from "./Counters";
+import QRDrawer from "./QRDrawer.jsx";
+
+const resumeUrl = `${import.meta.env.BASE_URL}resume.pdf`;
+
+const fadeGroup = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.15 } },
+};
+
+const fadeItem = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
 
 function Hero() {
-  const resumeUrl = `${import.meta.env.BASE_URL}resume.pdf`;
+  const [profileImg, setProfileImg] = useState(getCurrentImage);
+  const [drawer, setDrawer] = useState({ open: false });
+
+  useEffect(() => subscribe(setProfileImg), []);
+
+  const emailImgSrc = `${import.meta.env.BASE_URL}icons/mail.svg`;
 
   return (
     <section id="home" className="section min-h-screen pt-28">
-      <div className="container-grid grid items-center gap-10 lg:grid-cols-[1.25fr_0.75fr]">
+      <div className="container-grid">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl"
+          variants={fadeGroup}
+          initial="hidden"
+          animate="visible"
+          className="grid items-center gap-12 lg:grid-cols-[1.3fr_0.7fr]"
         >
-          <p className="eyebrow">India based AI learner</p>
-          <h1 className="mt-4 text-5xl font-black leading-none text-white sm:text-7xl lg:text-8xl">{profile.name}</h1>
-          <p className="mt-6 max-w-3xl text-xl font-semibold text-slate-200 lg:text-2xl">{profile.title}</p>
-          <p className="mt-5 max-w-2xl text-base leading-8 text-slate-400">
-            Building a strong foundation in intelligent systems, security concepts, computer fundamentals, and disciplined problem-solving.
-          </p>
+          <div>
+            <motion.div variants={fadeItem}>
+              <span className="hero-tag">
+                Think Different. Be Unique. Stay Anonymous.
+              </span>
+            </motion.div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <MagneticButton href="#contact" className="bg-gradient-to-r from-mint to-blue text-ink shadow-lg shadow-mint/15">
-              <Mail className="mr-2" size={18} /> Contact Me
-            </MagneticButton>
-            <MagneticButton href={resumeUrl} className="border border-line bg-white/[0.04] text-white hover:border-blue/70" target="_blank">
-              <Download className="mr-2" size={18} /> Resume
-            </MagneticButton>
-            <MagneticButton href="#projects" className="border border-line bg-white/[0.04] text-white hover:border-mint/70">
-              <ArrowDown className="mr-2" size={18} /> Explore Work
-            </MagneticButton>
+            <motion.h1
+              variants={fadeItem}
+              className="mt-6 text-5xl font-black leading-[1.05] text-white sm:text-6xl lg:text-7xl"
+            >
+              I Can Bring Your{" "}
+              <span className="premium-gradient-text">
+                Imagination
+              </span>{" "}
+              Into{" "}
+              <span className="premium-gradient-text">
+                Reality
+              </span>
+              .
+            </motion.h1>
+
+            <motion.p variants={fadeItem} className="mt-4 text-2xl font-bold text-white">
+              {profile.name}
+            </motion.p>
+
+            <motion.p variants={fadeItem} className="mt-3 text-lg font-semibold text-slate-300">
+              AI & Machine Learning Student,
+              <br />
+              Cybersecurity Enthusiast,
+              <br />
+              Published Author, and Lifelong Learner.
+            </motion.p>
+
+            <motion.p variants={fadeItem} className="mt-4 max-w-xl text-base leading-7 text-slate-400">
+              {profile.shortBio}
+            </motion.p>
+
+            <motion.div variants={fadeItem} className="mt-8 flex flex-wrap gap-3">
+              <a href="#projects" className="btn-primary">
+                View Projects
+                <ArrowRight size={18} />
+              </a>
+              <a href={resumeUrl} className="btn-secondary" target="_blank" rel="noreferrer">
+                <Download size={18} />
+                Download Resume
+              </a>
+              <a href="#book" className="btn-outline">
+                <BookOpen size={18} />
+                Read My Book
+              </a>
+            </motion.div>
           </div>
+
+          <motion.div
+            variants={fadeItem}
+            className="profile-card mx-auto w-full max-w-sm"
+          >
+            <div className="flex flex-col items-center text-center">
+              <div className="h-28 w-28 overflow-hidden rounded-full bg-gradient-to-br from-cyan-500 to-purple-600 p-[3px] shadow-lg shadow-cyan-500/20">
+                {profileImg ? (
+                  <img src={profileImg} alt="Uday Deshmukh" className="h-full w-full rounded-full object-cover" />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center rounded-full bg-ink text-4xl font-black text-white">
+                    UD
+                  </div>
+                )}
+              </div>
+              <h3 className="mt-6 text-2xl font-bold text-white">{profile.name}</h3>
+              <p className="mt-2 text-sm text-slate-400">{profile.title}</p>
+              <p className="mt-2 max-w-xs text-sm leading-5 text-slate-500">
+                {profile.college}
+              </p>
+              <div className="mt-3 flex items-center gap-2 text-sm text-slate-400">
+                <MapPin size={14} className="text-cyan-400" />
+                {profile.location}
+              </div>
+              <div className="mt-6 flex gap-2">
+                <a className="icon-button icon-linkedin" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                  <img src={`${import.meta.env.BASE_URL}icons/linkedin.svg`} alt="LinkedIn" className="h-full w-full rounded-[7px] object-cover" />
+                </a>
+                <a className="icon-button icon-instagram" href={profile.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
+                  <img src={`${import.meta.env.BASE_URL}icons/instagram.svg`} alt="Instagram" className="h-full w-full rounded-[7px] object-cover" />
+                </a>
+                <a className="icon-button icon-github" href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub">
+                  <img src={`${import.meta.env.BASE_URL}icons/github.svg`} alt="GitHub" className="h-full w-full rounded-[7px] object-cover" />
+                </a>
+                <button className="icon-button icon-email" onClick={() => setDrawer({ open: true })} aria-label="Email" type="button">
+                  <img src={`${import.meta.env.BASE_URL}icons/mail.svg`} alt="Email" className="h-full w-full rounded-[7px] object-cover" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
 
-        <motion.aside
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.18, duration: 0.75 }}
-          className="rounded-lg border border-line bg-panel/80 p-6 shadow-glow backdrop-blur"
-        >
-          <div className="grid h-36 w-36 place-items-center rounded-full border border-mint/30 bg-gradient-to-br from-mint/20 to-blue/10">
-            <div className="grid h-24 w-24 place-items-center rounded-full bg-gradient-to-br from-mint to-blue font-mono text-3xl font-black text-ink">
-              UD
-            </div>
-          </div>
-          <h2 className="mt-8 text-2xl font-bold text-white">AI, security, and steady growth.</h2>
-          <p className="mt-4 text-slate-400">Focused on learning how systems work, where they break, and how to protect them responsibly.</p>
-          <div className="mt-6 flex gap-2">
-            <a className="icon-button" href={`mailto:${profile.email}`} aria-label="Email">
-              <Mail size={18} />
-            </a>
-            <a className="icon-button" href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub">
-              <Github size={18} />
-            </a>
-            <a className="icon-button" href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-              <Linkedin size={18} />
-            </a>
-          </div>
-        </motion.aside>
+        <div className="mt-16">
+          <Counters />
+        </div>
       </div>
+
+      <QRDrawer
+        isOpen={drawer.open}
+        onClose={() => setDrawer({ open: false })}
+        platform="Email"
+        imgSrc={emailImgSrc}
+        link={`mailto:${profile.email}`}
+        type="email"
+      />
     </section>
   );
 }
