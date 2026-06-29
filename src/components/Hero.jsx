@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Download, BookOpen, MapPin } from "lucide-react";
+import { ArrowRight, BookOpen, MapPin } from "lucide-react";
 import { profile } from "./data";
 import { getCurrentImage, subscribe } from "../data/profileImages";
 import Counters from "./Counters";
 import QRDrawer from "./QRDrawer.jsx";
-
-const resumeUrl = `${import.meta.env.BASE_URL}resume.pdf`;
 
 const fadeGroup = {
   hidden: { opacity: 0 },
@@ -77,10 +75,6 @@ function Hero() {
               <a href="#projects" className="btn-primary">
                 View Projects
                 <ArrowRight size={18} />
-              </a>
-              <a href={resumeUrl} className="btn-secondary" target="_blank" rel="noreferrer">
-                <Download size={18} />
-                Download Resume
               </a>
               <a href="#book" className="btn-outline">
                 <BookOpen size={18} />
